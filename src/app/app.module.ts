@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PodcastListComponent } from './Project/Components/podcast-list/podcast-list.component';
 import { PodcastDetailsComponent } from './Project/Components/podcast-details/podcast-details.component';
 import { EpisodeDetailsComponent } from './Project/Components/episode-details/episode-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EpisodeDetailsComponent } from './Project/Components/episode-details/ep
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
