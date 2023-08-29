@@ -15,13 +15,16 @@ export class PodcastListComponent implements OnInit, OnDestroy  {
   constructor(private apiService: ApiService) {}
   
   ngOnInit(): void {
-    this.subscription = this.apiService.get100Popular().subscribe((response) => {
-      this.podcasts = response;
-      console.log(response);
+    // Starts a subscription to the api service to get the 100 popular podcasts and saves it into a variable
+    this.subscription = this.apiService.get100Popular().subscribe((response: any) => {
+      this.podcasts = response.feed.entry;
+      console.log(this.podcasts);
+      console.log(this.podcasts[0])
     })
   }
 
   ngOnDestroy(): void {
+    // When the component is destroyed unsubscribes from the previous request
     this.subscription.unsubscribe();
   }
 }
