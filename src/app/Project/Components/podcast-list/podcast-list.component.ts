@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 export class PodcastListComponent implements OnInit, OnDestroy  {
 
   podcasts: any;
+  searchText: string = '';
   subscription!: Subscription;
 
   constructor(private apiService: ApiService) {}
@@ -21,6 +22,17 @@ export class PodcastListComponent implements OnInit, OnDestroy  {
       console.log(this.podcasts);
       console.log(this.podcasts[0])
     })
+  }
+
+  get filteredPodcasts(): any[] {
+    if(!this.searchText.trim()){
+      return this.podcasts;
+    }
+
+    const lowerCaseSearch = this.searchText.toLowerCase();
+    return this.podcasts.filter((podcast: { [x: string]: { label: string; }; }) => 
+      podcast['im:name'].label.toLowerCase().includes(lowerCaseSearch)
+      || podcast['im:artist'].label.toLowerCase().includes(lowerCaseSearch))
   }
 
   ngOnDestroy(): void {

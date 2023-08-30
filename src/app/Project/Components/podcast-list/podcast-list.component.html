@@ -1,3 +1,11 @@
-<div *ngFor="let podcast of podcasts">
-  <p>Name: {{ podcast['im:name'].label }}</p>
+<div class="filter">
+  <span class="badge bg-primary me-3">100</span>
+  <input class="rounded" type="text" [(ngModel)]="searchText" placeholder="Filter podcasts...">
+</div>
+<div class="d-flex flex-wrap align-items-top justify-content-around mt-4">
+  <div *ngFor="let podcast of filteredPodcasts" class="card">
+    <img class="position-absolute" [src]="podcast['im:image'][2].label">
+    <div>{{ podcast['im:name'].label | uppercase }}</div>
+    <div class="author mb-3">Author: {{ podcast['im:artist'].label }}</div>
+  </div>
 </div>
