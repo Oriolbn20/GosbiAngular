@@ -23,13 +23,10 @@ export class PodcastListComponent implements OnInit, OnDestroy {
     if (cachedData && expiration && Date.now() < parseInt(expiration)) {
       // Data is in cache and not expired, use it
       this.podcasts = JSON.parse(cachedData);
-      console.log("CACHE");
-      console.log(this.podcasts);
     } else {
       // Data is not in cache or expired, get it from the api service to get the 100 popular podcasts and saves it into a variable
       this.subscription = this.apiService.get100Popular().subscribe((response: any) => {
         this.podcasts = response.feed.entry;
-        console.log(this.podcasts);
 
         // Cache the data in localStorage for a day
         localStorage.setItem('podcastData', JSON.stringify(this.podcasts));
