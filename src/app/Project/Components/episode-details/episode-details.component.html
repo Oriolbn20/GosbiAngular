@@ -1,1 +1,7 @@
-<p>episode-details works!</p>
+<div class="d-flex">
+  <app-podcast-card [podcast]="podcast" class="podcast-card mx-3"></app-podcast-card>
+  <div *ngIf="podcastDetails" class="d-flex flex-column w-100 me-3">
+    <div class="card w-100">
+    </div>
+  </div>
+</div>
