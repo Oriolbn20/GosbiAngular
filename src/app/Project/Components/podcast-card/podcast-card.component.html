@@ -1,0 +1,13 @@
+<div class="card">
+  <div>
+    <img [src]="podcast['im:image'][2].label">
+  </div>
+  <div>
+    <p>{{ podcast['im:name'].label }}</p>
+    <p>by {{ podcast['im:artist'].label }}</p>
+  </div>
+  <div>
+    <h5>Description:</h5>
+    <div>{{ podcast.summary.label }}</div>
+  </div>
+</div>

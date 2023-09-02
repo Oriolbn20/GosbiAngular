@@ -1,1 +1,22 @@
-<p>podcast-details works!</p>
+<div class="d-flex">
+  <app-podcast-card [podcast]="podcast" class="podcast-card mx-3"></app-podcast-card>
+  <div *ngIf="podcastDetails" class="d-flex flex-column w-100 me-3">
+    <div class="card w-100">
+      <h2>Episodes: {{ podcastDetails.resultCount }}</h2>
+    </div>
+    <div class="card w-100">
+      <table>
+        <tr>
+          <th class="w-50">Title</th>
+          <th>Date</th>
+          <th>Duration</th>
+        </tr>
+        <tr *ngFor="let episode of podcastDetails.results.slice(1); let i = index">
+          <td>{{ episode.trackName }}</td>
+          <td>{{ episode.releaseDate | date:'dd/MM/YYYY' }}</td>
+          <td>{{ episode.trackTimeMillis | date:'h:mm:ss' }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

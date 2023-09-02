@@ -8,13 +8,15 @@ import { PodcastDetailsComponent } from './Project/Components/podcast-details/po
 import { EpisodeDetailsComponent } from './Project/Components/episode-details/episode-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PodcastCardComponent } from './Project/Components/podcast-card/podcast-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PodcastListComponent,
     PodcastDetailsComponent,
-    EpisodeDetailsComponent
+    EpisodeDetailsComponent,
+    PodcastCardComponent
   ],
   imports: [
     BrowserModule,
