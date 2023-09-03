@@ -55,12 +55,9 @@ export class EpisodeDetailsComponent {
     ).subscribe({
       next: (details) => {
         const podcastDetails = details;
-        console.log(podcastDetails);
-        console.log(this.episodeId);
         this.episode = podcastDetails.results.find((e: { trackId: string | null; }) => {
           return e.trackId == this.episodeId;
         });
-        console.log(this.episode);
 
         // Update or create the object that contains all of podcast details in localStorage
         const podcastDetailsData = localStorage.getItem('podcastDetailsData');

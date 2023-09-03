@@ -13,7 +13,7 @@
             <th scope="col" colspan="1">Duration</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="podcastDetails.results">
           <tr *ngFor="let episode of podcastDetails.results.slice(1); let i = index">
             <td [routerLink]="['/podcast', podcastId, 'episode', episode.trackId]"  class="title">{{ episode.trackName }}</td>
             <td>{{ episode.releaseDate | date:'dd/MM/YYYY' }}</td>

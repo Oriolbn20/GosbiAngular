@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
 
-  url = 'https://itunes.apple.com/';
+  url = `https://api.allorigins.win/get?url=https://itunes.apple.com/`;
   constructor(private http: HttpClient) {
   }
 
