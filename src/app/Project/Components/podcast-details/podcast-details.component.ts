@@ -47,6 +47,7 @@ export class PodcastDetailsComponent {
           if (cachedPodcastDetails) {
             // If found in the cache, use it
             this.podcastDetails = cachedPodcastDetails;
+            console.log(this.podcastDetails);
             return of(cachedPodcastDetails); // Return an observable with the cached data
           }
         } // If not found in the cache or no cached data available, fetch from the API
@@ -55,6 +56,7 @@ export class PodcastDetailsComponent {
     ).subscribe({
       next: (details) => {
         this.podcastDetails = details;
+        console.log(this.podcastDetails);
         // Update or create the object that contains all of podcast details in localStorage
         const podcastDetailsData = localStorage.getItem('podcastDetailsData');
         let storedPodcastDetails;

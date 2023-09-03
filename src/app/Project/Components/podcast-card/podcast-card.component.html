@@ -1,13 +1,13 @@
 <div *ngIf="podcast" class="card">
-  <div>
-    <img [src]="podcast['im:image'][2].label">
+  <div class="d-flex justify-content-center">
+    <img class="rounded" [src]="podcast['im:image'][2].label">
   </div>
-  <div>
-    <p>{{ podcast['im:name'].label }}</p>
-    <p>by {{ podcast['im:artist'].label }}</p>
+  <div class="d-flex flex-column mb-3 mx-2">
+    <div class="title">{{ podcast['im:name'].label }}</div>
+    <div class="artist">by {{ podcast['im:artist'].label }}</div>
   </div>
-  <div>
+  <div class="d-flex flex-column mx-2 mb-3">
     <h5>Description:</h5>
-    <div>{{ podcast.summary.label }}</div>
+    <div class="description">{{ podcast.summary.label }}</div>
   </div>
 </div>

@@ -12,7 +12,7 @@ export class EpisodeDetailsComponent {
   podcastId!: string | null;
   episodeId!: string | null;
   podcast: any;
-  podcastDetails: any;
+  episode: any;
   subscription!: Subscription;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) { }
@@ -45,7 +45,8 @@ export class EpisodeDetailsComponent {
           const cachedPodcastDetails = storedPodcastDetails[this.podcastId as string];
           if (cachedPodcastDetails) {
             // If found in the cache, use it
-            this.podcastDetails = cachedPodcastDetails
+            const podcastDetails = cachedPodcastDetails;
+            this.episode = podcastDetails;
             return of(cachedPodcastDetails); // Return an observable with the cached data
           }
         } // If not found in the cache or no cached data available, fetch from the API
@@ -53,14 +54,20 @@ export class EpisodeDetailsComponent {
       })
     ).subscribe({
       next: (details) => {
-        this.podcastDetails = details;
+        const podcastDetails = details;
+        console.log(podcastDetails);
+        console.log(this.episodeId);
+        this.episode = podcastDetails.results.find((e: { trackId: string | null; }) => {
+          return e.trackId == this.episodeId;
+        });
+        console.log(this.episode);
 
         // Update or create the object that contains all of podcast details in localStorage
         const podcastDetailsData = localStorage.getItem('podcastDetailsData');
         let storedPodcastDetails = podcastDetailsData ? JSON.parse(podcastDetailsData) : {};
 
         // Replace the existing entry in the object
-        storedPodcastDetails[this.podcastId as string] = this.podcastDetails;
+        storedPodcastDetails[this.podcastId as string] = podcastDetails;
 
         // Cache the updated object in localStorage
         localStorage.setItem('podcastDetailsData', JSON.stringify(storedPodcastDetails));
