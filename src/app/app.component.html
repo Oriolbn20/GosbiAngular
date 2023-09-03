@@ -1,4 +1,6 @@
-<div class="header" routerLink="/">
+<div class="header d-flex justify-content-between" routerLink="/">
   <h3 class="ms-3">Podcaster</h3>
+  <div *ngIf="isLoading" class="spinner-grow text-primary" role="status">
+  </div>
 </div>
 <router-outlet></router-outlet>
